@@ -20,10 +20,10 @@ class ProductController extends Controller
         $class=$request->input('class');
         $status=$request->input('status');
 
-        if($request==null){
+        if( $name=="" && $class=="" && $status==""){
             $products=Product::all(['id', 'name','status']);
         }
-        else {
+        else{
             $products=Product::orwhere('name',$name)->orwhere('class',$class)->orwhere('status',$status)->get(['id', 'name','status']);
         }
 
